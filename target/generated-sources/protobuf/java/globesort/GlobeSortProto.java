@@ -33,11 +33,11 @@ public final class GlobeSortProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017globesort.proto\"\007\n\005Empty\"\032\n\010IntArray\022\016" +
-      "\n\006values\030\001 \003(\0052M\n\tGlobeSort\022\030\n\004Ping\022\006.Em" +
-      "pty\032\006.Empty\"\000\022&\n\014SortIntegers\022\t.IntArray" +
-      "\032\t.IntArray\"\000B\035\n\tglobesortB\016GlobeSortPro" +
-      "toP\001b\006proto3"
+      "\n\017globesort.proto\"\007\n\005Empty\"+\n\010IntArray\022\016" +
+      "\n\006values\030\001 \003(\005\022\017\n\007apptime\030\002 \001(\0052M\n\tGlobe" +
+      "Sort\022\030\n\004Ping\022\006.Empty\032\006.Empty\"\000\022&\n\014SortIn" +
+      "tegers\022\t.IntArray\032\t.IntArray\"\000B\035\n\tglobes" +
+      "ortB\016GlobeSortProtoP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -62,7 +62,7 @@ public final class GlobeSortProto {
     internal_static_IntArray_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IntArray_descriptor,
-        new java.lang.String[] { "Values", });
+        new java.lang.String[] { "Values", "Apptime", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

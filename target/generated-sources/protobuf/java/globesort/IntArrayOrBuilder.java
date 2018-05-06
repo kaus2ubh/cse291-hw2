@@ -19,4 +19,9 @@ public interface IntArrayOrBuilder extends
    * <code>repeated int32 values = 1;</code>
    */
   int getValues(int index);
+
+  /**
+   * <code>int32 apptime = 2;</code>
+   */
+  int getApptime();
 }

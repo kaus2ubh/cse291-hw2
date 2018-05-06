@@ -16,6 +16,7 @@ public  final class IntArray extends
   }
   private IntArray() {
     values_ = java.util.Collections.emptyList();
+    apptime_ = 0;
   }
 
   @java.lang.Override
@@ -64,6 +65,11 @@ public  final class IntArray extends
             input.popLimit(limit);
             break;
           }
+          case 16: {
+
+            apptime_ = input.readInt32();
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -90,6 +96,7 @@ public  final class IntArray extends
             globesort.IntArray.class, globesort.IntArray.Builder.class);
   }
 
+  private int bitField0_;
   public static final int VALUES_FIELD_NUMBER = 1;
   private java.util.List<java.lang.Integer> values_;
   /**
@@ -113,6 +120,15 @@ public  final class IntArray extends
   }
   private int valuesMemoizedSerializedSize = -1;
 
+  public static final int APPTIME_FIELD_NUMBER = 2;
+  private int apptime_;
+  /**
+   * <code>int32 apptime = 2;</code>
+   */
+  public int getApptime() {
+    return apptime_;
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -132,6 +148,9 @@ public  final class IntArray extends
     }
     for (int i = 0; i < values_.size(); i++) {
       output.writeInt32NoTag(values_.get(i));
+    }
+    if (apptime_ != 0) {
+      output.writeInt32(2, apptime_);
     }
   }
 
@@ -154,6 +173,10 @@ public  final class IntArray extends
       }
       valuesMemoizedSerializedSize = dataSize;
     }
+    if (apptime_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, apptime_);
+    }
     memoizedSize = size;
     return size;
   }
@@ -172,6 +195,8 @@ public  final class IntArray extends
     boolean result = true;
     result = result && getValuesList()
         .equals(other.getValuesList());
+    result = result && (getApptime()
+        == other.getApptime());
     return result;
   }
 
@@ -186,6 +211,8 @@ public  final class IntArray extends
       hash = (37 * hash) + VALUES_FIELD_NUMBER;
       hash = (53 * hash) + getValuesList().hashCode();
     }
+    hash = (37 * hash) + APPTIME_FIELD_NUMBER;
+    hash = (53 * hash) + getApptime();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -317,6 +344,8 @@ public  final class IntArray extends
       super.clear();
       values_ = java.util.Collections.emptyList();
       bitField0_ = (bitField0_ & ~0x00000001);
+      apptime_ = 0;
+
       return this;
     }
 
@@ -340,11 +369,14 @@ public  final class IntArray extends
     public globesort.IntArray buildPartial() {
       globesort.IntArray result = new globesort.IntArray(this);
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         values_ = java.util.Collections.unmodifiableList(values_);
         bitField0_ = (bitField0_ & ~0x00000001);
       }
       result.values_ = values_;
+      result.apptime_ = apptime_;
+      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -395,6 +427,9 @@ public  final class IntArray extends
           values_.addAll(other.values_);
         }
         onChanged();
+      }
+      if (other.getApptime() != 0) {
+        setApptime(other.getApptime());
       }
       onChanged();
       return this;
@@ -485,6 +520,32 @@ public  final class IntArray extends
     public Builder clearValues() {
       values_ = java.util.Collections.emptyList();
       bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+
+    private int apptime_ ;
+    /**
+     * <code>int32 apptime = 2;</code>
+     */
+    public int getApptime() {
+      return apptime_;
+    }
+    /**
+     * <code>int32 apptime = 2;</code>
+     */
+    public Builder setApptime(int value) {
+      
+      apptime_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 apptime = 2;</code>
+     */
+    public Builder clearApptime() {
+      
+      apptime_ = 0;
       onChanged();
       return this;
     }

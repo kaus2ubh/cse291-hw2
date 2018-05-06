@@ -54,6 +54,9 @@ public class GlobeSortClient {
         IntArray request = IntArray.newBuilder().addAllValues(Arrays.asList(values)).build();
         IntArray response = serverStub.sortIntegers(request);
 	long t4=System.currentTimeMillis();
+	int apptime = response.getApptime();
+        System.out.print("Application Time\t");
+	System.out.println(apptime);
         System.out.print("Network Throughput\t");
 	System.out.println(t4-t3);
         System.out.println("Sorted array");
