@@ -20,6 +20,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.lang.*;
+
 public class GlobeSortClient {
 
     private final ManagedChannel serverChannel;
@@ -40,12 +42,20 @@ public class GlobeSortClient {
 
     public void run(Integer[] values) throws Exception {
         System.out.println("Pinging " + serverStr + "...");
+	long t1=System.currentTimeMillis();
         serverStub.ping(Empty.newBuilder().build());
+	long t2=System.currentTimeMillis();
         System.out.println("Ping successful.");
+        System.out.print("Network Latency\t");
+	System.out.println(t2-t1);
 
         System.out.println("Requesting server to sort array");
+	long t3=System.currentTimeMillis();
         IntArray request = IntArray.newBuilder().addAllValues(Arrays.asList(values)).build();
         IntArray response = serverStub.sortIntegers(request);
+	long t4=System.currentTimeMillis();
+        System.out.print("Network Throughput\t");
+	System.out.println(t4-t3);
         System.out.println("Sorted array");
     }
 
