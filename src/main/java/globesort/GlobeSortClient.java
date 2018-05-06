@@ -30,6 +30,7 @@ public class GlobeSortClient {
 	private static int MAX_MESSAGE_SIZE = 100 * 1024 * 1024;
 
     private String serverStr;
+    public int len;
 
     public GlobeSortClient(String ip, int port) {
         this.serverChannel = ManagedChannelBuilder.forAddress(ip, port)
@@ -55,10 +56,10 @@ public class GlobeSortClient {
         IntArray response = serverStub.sortIntegers(request);
 	long t4=System.currentTimeMillis();
 	int apptime = response.getApptime();
-        System.out.print("Application Time\t");
-	System.out.println(apptime);
+        System.out.print("Application Throughput\t");
+	System.out.println((float)apptime/len);
         System.out.print("Network Throughput\t");
-	System.out.println(t4-t3);
+	System.out.println((float)(t4-t3-apptime)/2);
         System.out.println("Sorted array");
     }
 
@@ -102,8 +103,9 @@ public class GlobeSortClient {
         }
 
         Integer[] values = genValues(cmd_args.getInt("num_values"));
-
+	 
         GlobeSortClient client = new GlobeSortClient(cmd_args.getString("server_ip"), cmd_args.getInt("server_port"));
+        client.len = cmd_args.getInt("num_values");
         try {
             client.run(values);
         } finally {
