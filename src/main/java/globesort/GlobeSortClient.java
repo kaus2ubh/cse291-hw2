@@ -57,9 +57,9 @@ public class GlobeSortClient {
 	long t4=System.currentTimeMillis();
 	int apptime = response.getApptime();
         System.out.print("Application Throughput\t");
-	System.out.println((float)apptime/len);
+	System.out.println((float)len/(t4-t3));
         System.out.print("Network Throughput\t");
-	System.out.println((float)(t4-t3-apptime)/2);
+	System.out.println((float)len/((t4-t3-apptime)/2));
         System.out.println("Sorted array");
     }
 
